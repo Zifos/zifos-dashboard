@@ -59,6 +59,7 @@
   </a-layout>
 </template>
 <script>
+
 export default {
   data() {
     return {
@@ -83,6 +84,11 @@ export default {
           name: this.$t('workOrders'),
           icon: 'tool',
           link: `work-orders___${this.$i18n.locale}`
+        },
+        {
+          name: 'Login',
+          icon: 'user',
+          link: `login___${this.$i18n.locale}`
         }
       ]
     } 
