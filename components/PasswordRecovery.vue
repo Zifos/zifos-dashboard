@@ -1,13 +1,6 @@
 <template>
   <div class="password-container">
     <a-input
-      class="password-container__user"
-      v-model="userData.name"
-      placeholder="Nombre de usuario"
-    >
-      <a-icon slot="prefix" type="user" />
-    </a-input>
-    <a-input
       class="password-container__email"
       v-model="userData.mail"
       placeholder="Email"
@@ -15,12 +8,14 @@
       <a-icon slot="prefix" type="mail" />
     </a-input>
     <div>
-      <a-button @click="login" type="link">
+      <nuxt-link to="/login" type="link">
+        <!-- //@click="login  -->
         Volver al login
-      </a-button>
+      </nuxt-link>
+
       <a-button
         type="danger"
-        :disabled="userData.name === '' || userData.mail === ''"
+        :disabled="userData.mail === ''"
         @click="recoverPassword"
       >
         Recuperar contraseña
@@ -35,11 +30,8 @@ export default {
   data() {
     return {
       userData: {
-        name: "",
         mail: ""
       }
-      //   regular:
-      //     "^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
     };
   },
 
