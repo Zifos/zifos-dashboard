@@ -9,12 +9,19 @@
     >
       <a-form-model-item class="form-model__logo">
         <a-col class="form-model__logo--img-logo">
-          Logo
+          <img
+            :src="require('../assets/svg/logo-zifos.svg')"
+            alt="Logo Zifos"
+          />
         </a-col>
       </a-form-model-item>
 
       <a-form-model-item class="form-model__user">
-        <a-input v-model.trim="userForm.user" placeholder="User">
+        <a-input
+          class="form-model__user--btn-user"
+          v-model.trim="userForm.user"
+          placeholder="Usuario"
+        >
           <a-icon
             slot="prefix"
             type="user"
@@ -27,7 +34,7 @@
         <a-input-password
           v-model="userForm.password"
           type="password"
-          placeholder="Password"
+          placeholder="Contraseña"
         >
           <a-icon
             slot="prefix"
@@ -40,7 +47,7 @@
       <a-form-model-item class="form-model__submit">
         <a-button
           class="form-model__submit--btn"
-          type="primary"
+          type="danger"
           block
           html-type="submit"
           :disabled="userForm.user === '' || userForm.password === ''"
@@ -48,7 +55,7 @@
           Ingresar
         </a-button>
         <a-row type="flex" justify="center">
-          <a-col>
+          <a-col class="form-model__forgot">
             <nuxt-link to="/password-recovery"
               >¿Olvidaste tu contraseña?</nuxt-link
             >
@@ -88,81 +95,40 @@ export default {
   padding: 0;
 }
 
-.form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 80%;
-  width: 35%;
-  background-color: #e8bb51;
-  border-radius: 10px;
-  box-shadow: 2px 2px 8px 1px black;
-  .form-model {
-    &__logo {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      &--img-logo {
-        width: 3.125rem;
-        height: 3.125rem;
-        margin-top: 0.5rem;
-      }
+.form-model {
+  &__logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3.5rem;
+  }
+  &__user {
+    margin-top: 0.15rem;
+    ::placeholder {
+      padding-left: 4px;
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.4);
     }
-    &__tabs {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 1rem;
-      margin-bottom: 0.25rem;
-      a {
-        color: rgba(0, 0, 0, 0.6);
-        font-weight: bold;
-        font-size: 14px;
-        &:hover {
-          color: #000000;
-        }
-      }
+  }
+  &__password {
+    margin-top: 0.15rem;
+    ::placeholder {
+      padding-left: 4px;
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.4);
     }
-    &__user {
-      margin-top: 0.25rem;
-      ::placeholder {
-        padding-left: 4px;
-        font-size: 14px;
-        color: rgba(0, 0, 0, 0.4);
-      }
-    }
-    &__password {
-      margin-top: 0.25rem;
-      ::placeholder {
-        padding-left: 4px;
-        font-size: 14px;
-        color: rgba(0, 0, 0, 0.4);
-      }
-    }
-    &__submit {
-      width: 100%;
-      margin-top: 0.5rem;
-      display: flex;
-      justify-content: center;
-      &--btn {
-        width: 6.25rem;
-      }
-    }
-    &__dates {
-      display: flex;
-      justify-content: space-between;
-      span {
-        font-size: 0.75rem;
-        color: rgba(0, 0, 0, 0.5);
-        &:hover {
-          color: #000000;
-        }
-      }
-      a {
-        font-size: 0.75rem;
-        color: rgba(0, 0, 0, 0.5);
-        &:hover {
-          color: #000000;
-        }
+  }
+  &__submit {
+    width: 100%;
+    margin-top: 0.75rem;
+  }
+  &__forgot {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+    a {
+      color: rgba(237, 31, 44, 0.5);
+      &:hover {
+        color: #ed1f2c;
       }
     }
   }
