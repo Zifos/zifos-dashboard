@@ -1,5 +1,15 @@
 <template>
   <div class="password-container">
+    <a-col class="password-container__logo">
+      <img :src="require('../assets/svg/logo-zifos.svg')" alt="Logo Zifos" />
+    </a-col>
+
+    <div class="password-container__restore-password">
+      <a-text>
+        <h3>Restablecer tu contraseña</h3>
+      </a-text>
+    </div>
+
     <a-input
       class="password-container__email"
       v-model="userData.mail"
@@ -9,11 +19,6 @@
     </a-input>
 
     <div>
-      <nuxt-link to="/login" type="link">
-        <!-- //@click="login  -->
-        Volver al login
-      </nuxt-link>
-
       <a-button
         class="password-container__btn-send"
         type="danger"
@@ -22,14 +27,15 @@
       >
         Enviar instrucciones
       </a-button>
-      <br />
-      <a-button
-        @click="login"
+      <nuxt-link
+        to="/login"
         type="link"
         class="password-container__backto-login"
       >
+        <!-- //@click="login  -->
         Volver al login
-      </a-button>
+      </nuxt-link>
+      <br />
     </div>
   </div>
 </template>
@@ -66,13 +72,14 @@ export default {
 .password-container {
   display: flex;
   flex-direction: column;
-  width: 220px;
-  height: 100%;
+  justify-content: center;
+  width: 210px;
+  height: 100vh;
   overflow: hiiden;
   &__logo {
     display: flex;
     justify-content: center;
-    margin-bottom: 4.2rem;
+    margin-bottom: 3.8rem;
   }
   &__restore-password {
     display: flex;

@@ -43,13 +43,15 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 62%;
-  width: 22%;
+  // width: 26%;
+  // height: 70%;
+  width: 359px;
+  height: 438px;
   margin-left: auto;
   margin-right: auto;
   background-color: #f6e8d9;
   border-radius: 2rem;
-  margin-top: 7%;
+  margin-top: 25vh;
   box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.3);
 }
 </style>
