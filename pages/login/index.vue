@@ -24,6 +24,17 @@ export default {
       this.recovery = !this.recovery;
       console.log(this.recovery);
     }
+  }, 
+  async mounted(){
+    try {
+      await this.$fireAuth.signInWithEmailAndPassword(
+        'franco.colares08@gmail.com',
+        'Zifos2020'
+      )
+      alert('logged');
+    } catch (e) {
+      alert(e)
+    }
   }
 };
 </script>
