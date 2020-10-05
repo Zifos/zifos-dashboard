@@ -3,7 +3,6 @@
     <div class="form-container">
       <div>
         <login v-if="recovery === false" @click="handleClick"></login>
-        <!-- <passwordRecovery v-else @click="handleClick"></passwordRecovery> -->
       </div>
     </div>
   </div>
@@ -20,24 +19,16 @@ export default {
   },
 
   methods: {
-    formSubmit() {
-      console.log(this.userForm);
-    },
-    handleClick() {
-      this.recovery = !this.recovery;
-      console.log(this.recovery);
-      // routes.replace("PasswordRecovery");
-    }
-  }, 
-  async mounted(){
+  },
+  async mounted() {
     try {
       await this.$fireAuth.signInWithEmailAndPassword(
-        'franco.colares08@gmail.com',
-        'Zifos2020'
-      )
-      alert('logged');
+        "franco.colares08@gmail.com",
+        "Zifos2020"
+      );
+      alert("logged");
     } catch (e) {
-      alert(e)
+      alert(e);
     }
   }
 };
@@ -54,8 +45,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  // width: 26%;
-  // height: 70%;
   width: 359px;
   height: 438px;
   margin-left: auto;

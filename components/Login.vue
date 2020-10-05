@@ -22,11 +22,7 @@
           v-model.trim="userForm.user"
           placeholder="Usuario"
         >
-          <a-icon
-            slot="prefix"
-            type="user"
-            style="color: rgba(0, 0, 0, 0.40)"
-          />
+          <a-icon slot="prefix" type="user" style="color: rgba(0, 0, 0, 0.4)" />
         </a-input>
       </a-form-model-item>
 
@@ -36,16 +32,13 @@
           type="password"
           placeholder="Contraseña"
         >
-          <a-icon
-            slot="prefix"
-            type="lock"
-            style="color: rgba(0, 0, 0, 0.40)"
-          />
+          <a-icon slot="prefix" type="lock" style="color: rgba(0, 0, 0, 0.4)" />
         </a-input-password>
       </a-form-model-item>
 
       <a-form-model-item class="form-model__submit">
         <a-button
+          @click="validateLogin"
           class="form-model__submit--btn"
           type="danger"
           block
@@ -84,9 +77,25 @@ export default {
 
     recovery() {
       this.$emit("click");
+    },
+
+
+  async validateLogin(user,password) {
+    try {
+      await this.$fireAuth.signInWithEmailAndPassword(
+        this.userForm.user,
+        this.userForm.password
+      );
+      alert("logged");
+      this.$router.push({name:'index'});
+    } catch (e) {
+      alert(e);
+      console.log(e);
     }
   }
-};
+
+}
+}
 </script>
 
 <style lang="scss" scoped>

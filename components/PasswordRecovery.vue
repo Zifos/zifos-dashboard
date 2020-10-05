@@ -32,7 +32,6 @@
         type="link"
         class="password-container__backto-login"
       >
-        <!-- //@click="login  -->
         Volver al login
       </nuxt-link>
       <br />

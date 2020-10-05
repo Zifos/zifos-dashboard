@@ -15,19 +15,19 @@
 export default {
   data() {
     return {
-      // login: true
+      
     };
   },
 
-  // methods: {
-  //   validateLogin() {
-  //     if (this.login) {
-  //       router.push("http://localhost:3000/es/");
-  //     } else {
-  //       router.push("http://localhost:3000/es/login");
-  //     }
-  //   }
-  // },
+// methods: {
+//   validateLogin() {
+//     if (this.login) {
+//       router.push("http://localhost:3000/es/");
+//     } else {
+//       router.push("http://localhost:3000/es/login");
+//     }
+//   }
+// },
 
   meta: {
     breadcrumbs: [
