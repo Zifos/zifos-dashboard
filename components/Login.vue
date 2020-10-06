@@ -84,7 +84,6 @@ export default {
           this.userForm.user,
           this.userForm.password
         );
-        this.$router.push({ name: "index___es___default" });
       } catch (e) {
         alert(e);
       }

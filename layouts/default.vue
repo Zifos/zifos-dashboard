@@ -81,7 +81,6 @@ export default {
       try {
         await this.$fireAuth.signOut();
         this.redirect("login___es");
-        console.log(this.isLoggedIn);
       } catch (e) {
         alert(e);
       }
@@ -90,7 +89,6 @@ export default {
 
   mounted() {
     if (!this.isLoggedIn) {
-      console.log("lalala");
       this.redirect("login___es");
     }
   },

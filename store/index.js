@@ -63,6 +63,7 @@ export const actions = {
             return
         }
         commit('SET_AUTH_USER', { authUser })
+        this.$router.push({ name: "index___es___default" }); // [TODO: FECO] Cambiar este metodo a un middleware
     },
 
     checkVuexStore(ctx) {
