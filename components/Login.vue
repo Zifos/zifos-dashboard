@@ -4,7 +4,6 @@
       class="form__model"
       layout="vertical"
       :model="userForm"
-      @submit="formSubmit"
       @submit.native.prevent
     >
       <a-form-model-item class="form-model__logo">
@@ -60,6 +59,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "Login",
   data() {
@@ -70,32 +70,33 @@ export default {
       }
     };
   },
-  methods: {
-    formSubmit() {
-      console.log(this.userForm);
-    },
 
-    recovery() {
-      this.$emit("click");
-    },
-
-
-  async validateLogin(user,password) {
-    try {
-      await this.$fireAuth.signInWithEmailAndPassword(
-        this.userForm.user,
-        this.userForm.password
-      );
-      alert("logged");
-      this.$router.push({name:'index'});
-    } catch (e) {
-      alert(e);
-      console.log(e);
+  mounted() {
+    if (this.isLoggedIn) {
+      this.$router.push({ name: "index___es___default" });
     }
-  }
+  },
 
-}
-}
+  methods: {
+    async validateLogin(user, password) {
+      try {
+        await this.$fireAuth.signInWithEmailAndPassword(
+          this.userForm.user,
+          this.userForm.password
+        );
+        this.$router.push({ name: "index___es___default" });
+      } catch (e) {
+        alert(e);
+      }
+    }
+  },
+
+  computed: {
+    ...mapGetters({
+      isLoggedIn: "isLoggedIn"
+    })
+  }
+};
 </script>
 
 <style lang="scss" scoped>

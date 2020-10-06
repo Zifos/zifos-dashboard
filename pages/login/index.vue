@@ -2,7 +2,7 @@
   <div class="container">
     <div class="form-container">
       <div>
-        <login v-if="recovery === false" @click="handleClick"></login>
+        <login></login>
       </div>
     </div>
   </div>
@@ -12,25 +12,8 @@
 export default {
   layout: "login",
   name: "layoutView",
-  data() {
-    return {
-      recovery: false
-    };
-  },
 
-  methods: {
-  },
-  async mounted() {
-    try {
-      await this.$fireAuth.signInWithEmailAndPassword(
-        "franco.colares08@gmail.com",
-        "Zifos2020"
-      );
-      alert("logged");
-    } catch (e) {
-      alert(e);
-    }
-  }
+  methods: {}
 };
 </script>
 

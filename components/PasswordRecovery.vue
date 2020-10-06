@@ -48,16 +48,6 @@ export default {
         mail: ""
       }
     };
-  },
-
-  methods: {
-    recoverPassword() {
-      console.log(this.userData);
-    },
-
-    login() {
-      this.$emit("click");
-    }
   }
 };
 </script>

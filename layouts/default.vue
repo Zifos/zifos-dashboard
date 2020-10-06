@@ -35,19 +35,10 @@
             {{ `${$t("language")} '${locale.name}'` }}
           </nuxt-link>
         </div>
-        <div>
-          <span>
-            {{ $t("demo") }}
-          </span>
-          <a href="https://twitter.com/fecocode" target="_blank">
-            <a-icon type="twitter-circle" theme="filled" />
-          </a>
-          <a href="https://github.com/fecocode" target="_blank">
-            <a-icon type="github" theme="filled" />
-          </a>
-          <a href="https://linkedin.com/in/francocolares" target="_blank">
-            <a-icon type="linkedin" theme="filled" />
-          </a>
+        <div class="logOut">
+          <a-button type="link" @click="logout">
+            <a-icon type="logout" />Cerrar sesión
+          </a-button>
         </div>
       </a-layout-header>
       <a-breadcrumb class="breadcrumb">
@@ -72,47 +63,67 @@
   </a-layout>
 </template>
 <script>
-
+import { mapGetters } from "vuex";
 
 export default {
   data() {
     return {
-      collapsed: false,
+      collapsed: false
     };
   },
 
   methods: {
-    redirect(link){
-      this.$router.push({name:link});
+    redirect(link) {
+      this.$router.push({ name: link });
+    },
+
+    async logout() {
+      try {
+        await this.$fireAuth.signOut();
+        this.redirect("login___es");
+        console.log(this.isLoggedIn);
+      } catch (e) {
+        alert(e);
+      }
     }
   },
+
+  mounted() {
+    if (!this.isLoggedIn) {
+      console.log("lalala");
+      this.redirect("login___es");
+    }
+  },
+
   computed: {
-    breadcrumbs(){
+    breadcrumbs() {
       return this.$store.state.breadcrumbs;
     },
-    availableLocales () {
-      return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
+    availableLocales() {
+      return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale);
     },
-    menuItems(){
+    menuItems() {
       return [
         {
-          name: this.$t('workOrders'),
-          icon: 'tool',
+          name: this.$t("workOrders"),
+          icon: "tool",
           link: `work-orders___${this.$i18n.locale}`
         },
         {
-          name: 'login',
-          icon: 'user',
+          name: "login",
+          icon: "user",
           link: `login___${this.$i18n.locale}`
         }
-      ]
-    } 
-  },
-  
+      ];
+    },
+
+    ...mapGetters({
+      isLoggedIn: "isLoggedIn"
+    })
+  }
 };
 </script>
 <style>
-
 #layout {
   height: auto;
   min-height: 100vh;
@@ -150,8 +161,8 @@ export default {
   margin: 1em 2em;
 }
 
-#layout .content{
-  margin: .5em 1em;
+#layout .content {
+  margin: 0.5em 1em;
   padding: 2em;
   background: #fff;
   height: fit-content;
@@ -174,8 +185,13 @@ export default {
   margin: 16px;
 }
 
-#layout img{
+#layout img {
   max-height: 100%;
   max-width: 100%;
+}
+
+.logOut {
+  display: flex;
+  align-items: center;
 }
 </style>
