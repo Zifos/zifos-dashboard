@@ -4,22 +4,24 @@
       class="form__model"
       layout="vertical"
       :model="userForm"
-      @submit="formSubmit"
       @submit.native.prevent
     >
       <a-form-model-item class="form-model__logo">
         <a-col class="form-model__logo--img-logo">
-          <img :src = "require('../assets/svg/logo-zifos.svg')" alt='Logo Zifos'>
+          <img
+            :src="require('../assets/svg/logo-zifos.svg')"
+            alt="Logo Zifos"
+          />
         </a-col>
       </a-form-model-item>
 
       <a-form-model-item class="form-model__user">
-        <a-input class="form-model__user--btn-user" v-model.trim="userForm.user" placeholder="Usuario">
-          <a-icon
-            slot="prefix"
-            type="user"
-            style="color: rgba(0, 0, 0, 0.40)"
-          />
+        <a-input
+          class="form-model__user--btn-user"
+          v-model.trim="userForm.user"
+          placeholder="Usuario"
+        >
+          <a-icon slot="prefix" type="user" style="color: rgba(0, 0, 0, 0.4)" />
         </a-input>
       </a-form-model-item>
 
@@ -29,16 +31,13 @@
           type="password"
           placeholder="Contraseña"
         >
-          <a-icon
-            slot="prefix"
-            type="lock"
-            style="color: rgba(0, 0, 0, 0.40)"
-          />
+          <a-icon slot="prefix" type="lock" style="color: rgba(0, 0, 0, 0.4)" />
         </a-input-password>
       </a-form-model-item>
 
       <a-form-model-item class="form-model__submit">
         <a-button
+          @click="validateLogin"
           class="form-model__submit--btn"
           type="danger"
           block
@@ -48,7 +47,7 @@
           Ingresar
         </a-button>
         <a-row type="flex" justify="center">
-          <a-col>
+          <a-col class="form-model__forgot">
             <nuxt-link to="/password-recovery"
               >¿Olvidaste tu contraseña?</nuxt-link
             >
@@ -60,6 +59,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "Login",
   data() {
@@ -70,14 +70,30 @@ export default {
       }
     };
   },
-  methods: {
-    formSubmit() {
-      console.log(this.userForm);
-    },
 
-    recovery() {
-      this.$emit("click");
+  mounted() {
+    if (this.isLoggedIn) {
+      this.$router.push({ name: "index___es___default" });
     }
+  },
+
+  methods: {
+    async validateLogin(user, password) {
+      try {
+        await this.$fireAuth.signInWithEmailAndPassword(
+          this.userForm.user,
+          this.userForm.password
+        );
+      } catch (e) {
+        alert(e);
+      }
+    }
+  },
+
+  computed: {
+    ...mapGetters({
+      isLoggedIn: "isLoggedIn"
+    })
   }
 };
 </script>
@@ -101,7 +117,7 @@ export default {
     ::placeholder {
       padding-left: 4px;
       font-size: 14px;
-      color: rgba(0, 0, 0, 0.40);
+      color: rgba(0, 0, 0, 0.4);
     }
   }
   &__password {
@@ -109,7 +125,7 @@ export default {
     ::placeholder {
       padding-left: 4px;
       font-size: 14px;
-      color: rgba(0, 0, 0, 0.40);
+      color: rgba(0, 0, 0, 0.4);
     }
   }
   &__submit {
@@ -119,11 +135,11 @@ export default {
   &__forgot {
     display: flex;
     justify-content: center;
-    margin-top: 0.50rem;
+    margin-top: 0.5rem;
     a {
       color: rgba(237, 31, 44, 0.5);
       &:hover {
-        color: #ED1F2C;
+        color: #ed1f2c;
       }
     }
   }

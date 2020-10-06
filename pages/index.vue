@@ -4,30 +4,18 @@
     <a-icon type="cloud" theme="twoTone" class="cloud-2" />
     <a-icon type="rocket" theme="twoTone" class="rocket" />
     <a-icon type="cloud" theme="twoTone" class="cloud-3" />
-    <hr>
-    <span><b>{{$t('welcome')}}</b></span>
-    <a-button type="primary">Hola?</a-button>
+    <hr />
+    <span
+      ><b>{{ $t("welcome") }}</b></span
+    >
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {
-      // login: true
-    };
+    return {}
   },
-
-  // methods: {
-  //   validateLogin() {
-  //     if (this.login) {
-  //       router.push("http://localhost:3000/es/");
-  //     } else {
-  //       router.push("http://localhost:3000/es/login");
-  //     }
-  //   }
-  // },
-
   meta: {
     breadcrumbs: [
       {
