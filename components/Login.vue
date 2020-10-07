@@ -35,7 +35,7 @@
         </a-input-password>
       </a-form-model-item>
       <div class="form-model__error">
-        <span v-show="this.error">Usuario o contraseña incorrecta.</span>
+        <span v-show="error">Usuario o contraseña incorrecta.</span>
       </div>
       <a-form-model-item class="form-model__submit">
         <a-button

@@ -3,6 +3,7 @@
     <PasswordRecovery></PasswordRecovery>
   </div>
 </template>
+
 <script>
 export default {
   layout: "login",
