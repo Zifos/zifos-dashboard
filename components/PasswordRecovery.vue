@@ -21,7 +21,7 @@
     <div>
       <a-button
         class="password-container__btn-send"
-        type="danger"
+        type="primary"
         :disabled="userData.mail === ''"
         @click="recoverPassword"
       >
@@ -65,8 +65,8 @@ export default {
   flex-direction: column;
   justify-content: center;
   width: 210px;
-  height: 100vh;
-  overflow: hiiden;
+  height: 100%;
+  overflow: hidden;
   &__logo {
     display: flex;
     justify-content: center;
@@ -82,7 +82,7 @@ export default {
     ::placeholder {
       padding-left: 4px;
       font-size: 14px;
-      color: rgba(0, 0, 0, 0.4);
+      color: rgba($black, 0.4);
     }
   }
   &__btn-send {
@@ -93,9 +93,9 @@ export default {
     margin-top: 0.5rem;
     display: flex;
     justify-content: center;
-    color: rgba(237, 31, 44, 0.5);
+    color: rgba($navy-blue, 0.5);
     &:hover {
-      color: #ed1f2c;
+      color: $navy-blue;
     }
   }
 }

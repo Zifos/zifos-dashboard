@@ -38,7 +38,9 @@ module.exports = {
         lessOptions: {
           modifyVars: {
             // Modify ANT DESIGN variables here
-            'primary-color': '#1DA57A',
+            '@btn-primary-bg': '#151721',
+            '@input-hover-border-color': '#151721',
+            '@outline-color': '#151721',
           },
           javascriptEnabled: true,
         },

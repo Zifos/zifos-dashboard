@@ -39,7 +39,7 @@
         <a-button
           @click="validateLogin"
           class="form-model__submit--btn"
-          type="danger"
+          type="primary"
           block
           html-type="submit"
           :disabled="userForm.user === '' || userForm.password === ''"
@@ -117,7 +117,7 @@ export default {
     ::placeholder {
       padding-left: 4px;
       font-size: 14px;
-      color: rgba(0, 0, 0, 0.4);
+      color: rgba($black, 0.4);
     }
   }
   &__password {
@@ -125,7 +125,7 @@ export default {
     ::placeholder {
       padding-left: 4px;
       font-size: 14px;
-      color: rgba(0, 0, 0, 0.4);
+      color: rgba($black, 0.4);
     }
   }
   &__submit {
@@ -137,9 +137,9 @@ export default {
     justify-content: center;
     margin-top: 0.5rem;
     a {
-      color: rgba(237, 31, 44, 0.5);
+      color: rgba($navy-blue, 0.5);
       &:hover {
-        color: #ed1f2c;
+        color: $navy-blue;
       }
     }
   }
