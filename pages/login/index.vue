@@ -19,8 +19,10 @@ export default {
 
 <style lang="scss" scoped>
 .container {
+  display: flex;
+  align-items: center;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: #3d4159;
 }
 
@@ -34,7 +36,6 @@ export default {
   margin-right: auto;
   background-color: #f6e8d9;
   border-radius: 2rem;
-  margin-top: 25vh;
   box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.3);
 }
 </style>

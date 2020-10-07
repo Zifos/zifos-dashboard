@@ -34,7 +34,9 @@
           <a-icon slot="prefix" type="lock" style="color: rgba(0, 0, 0, 0.4)" />
         </a-input-password>
       </a-form-model-item>
-
+      <div class="form-model__error">
+        <span v-show="this.error">Usuario o contraseña incorrecta.</span>
+      </div>
       <a-form-model-item class="form-model__submit">
         <a-button
           @click="validateLogin"
@@ -64,9 +66,10 @@ export default {
   name: "Login",
   data() {
     return {
+      error:false,
       userForm: {
         user: "",
-        password: ""
+        password: "",
       }
     };
   },
@@ -85,7 +88,7 @@ export default {
           this.userForm.password
         );
       } catch (e) {
-        alert(e);
+        this.error = true;
       }
     }
   },
@@ -125,6 +128,12 @@ export default {
       font-size: 14px;
       color: rgba(0, 0, 0, 0.4);
     }
+  }
+  &__error{
+    display: flex;
+    justify-content: center;
+    color: #ed1f2c;
+    font-weight: bold;
   }
   &__submit {
     width: 100%;
