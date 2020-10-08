@@ -3,7 +3,7 @@
     <a-layout-sider v-model="collapsed" :trigger="null" collapsible>
       <div class="logo">
         <n-link :to="{ name: `index___${$i18n.locale}` }">
-          <img src="/qplus-logo.png" alt="qplus-logo" />
+           <img :src="require('../assets/svg/logo-zifos.svg')" alt="Logo Zifos" />
         </n-link>
       </div>
       <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
@@ -103,14 +103,14 @@ export default {
     menuItems() {
       return [
         {
-          name: this.$t("workOrders"),
-          icon: "tool",
-          link: `work-orders___${this.$i18n.locale}`
+          name: "Preguntas",
+          icon: "question",
+          link: `question___${this.$i18n.locale}`
         },
         {
-          name: "login",
+          name: "Usuarios",
           icon: "user",
-          link: `login___${this.$i18n.locale}`
+          link: `users___${this.$i18n.locale}`
         }
       ];
     },
@@ -121,14 +121,16 @@ export default {
   }
 };
 </script>
+
 <style>
+
 #layout {
   height: auto;
   min-height: 100vh;
 }
 
 #layout .header {
-  background: #fff;
+  background: #F6E8D9;
   padding: 0;
   display: flex;
   align-content: center;
@@ -139,6 +141,7 @@ export default {
   width: 40%;
   padding: 0 2em;
   display: flex;
+  color: #151721;
   justify-content: flex-end;
 }
 
@@ -153,6 +156,11 @@ export default {
 
 #layout .header div .normal-link {
   font-size: 1em !important;
+  color: rgba(21, 23, 33, 0.5);
+}
+
+#layout .header div .normal-link:hover {
+  color: #151721;
 }
 
 #layout .breadcrumb {
@@ -162,7 +170,7 @@ export default {
 #layout .content {
   margin: 0.5em 1em;
   padding: 2em;
-  background: #fff;
+  background: #F6E8D9;
   height: fit-content;
 }
 
@@ -175,7 +183,7 @@ export default {
 }
 
 #layout .trigger:hover {
-  color: #1890ff;
+  color: #151721;
 }
 
 #layout .logo {
