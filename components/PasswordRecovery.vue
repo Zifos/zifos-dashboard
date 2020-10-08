@@ -32,7 +32,7 @@
         type="link"
         class="password-container__backto-login"
       >
-        Volver al login
+        Volver al ingreso
       </nuxt-link>
       <br /> <!-- TODO: Cambiar por margen -->
     </div>
@@ -41,7 +41,7 @@
 
 <script>
 export default {
-  name: "Password",
+  name: "Password-recovery",
   data() {
     return {
       userData: {
