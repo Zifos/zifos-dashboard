@@ -9,21 +9,25 @@
         <h3>Restablecer tu contraseña</h3>
       </a-text>
     </div>
-
     <a-input
+      v-model="$v.mail.$model"
+      name="mail"
       class="password-container__email"
-      v-model="userData.mail"
       placeholder="Email"
     >
       <a-icon slot="prefix" type="mail" />
     </a-input>
 
+    <div class="password-container__invalid-mail">
+      <span v-if="$v.mail.$error">Email invalido</span>
+    </div>
+
     <div>
       <a-button
         class="password-container__btn-send"
         type="primary"
-        :disabled="userData.mail === ''"
-        @click="recoverPassword"
+        @click.prevent="recovery"
+        :disabled="$v.mail.$error || mail === ''"
       >
         Enviar instrucciones
       </a-button>
@@ -32,28 +36,39 @@
         type="link"
         class="password-container__backto-login"
       >
-        Volver al ingreso
+        Volver al login
       </nuxt-link>
-      <br /> <!-- TODO: Cambiar por margen -->
+      <br />
+      <!-- TODO: Cambiar por margen -->
     </div>
   </div>
 </template>
 
 <script>
+import { required, email } from "vuelidate/lib/validators";
+
+
 export default {
   name: "Password-recovery",
   data() {
     return {
-      userData: {
-        mail: ""
-      }
+      mail: ""
     };
-  }
+  },
+
+  validations: {
+    mail: {
+      required,
+      email,
+      
+    }
+  },
+
 };
 </script>
 
 <style lang="scss" scoped>
-@import '~/assets/variables';
+@import "~/assets/variables";
 
 * {
   margin: 0;
@@ -84,6 +99,14 @@ export default {
       font-size: 14px;
       color: rgba($black, 0.4);
     }
+  
+  }
+  &__invalid-mail{
+     display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #ed1f2c;
+      
   }
   &__btn-send {
     width: 100%;

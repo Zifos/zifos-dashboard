@@ -66,10 +66,10 @@ export default {
   name: "Login",
   data() {
     return {
-      error:false,
+      error: false,
       userForm: {
         user: "",
-        password: "",
+        password: ""
       }
     };
   },
@@ -102,7 +102,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~/assets/variables';
+@import "~/assets/variables";
 
 * {
   margin: 0;
@@ -131,11 +131,10 @@ export default {
       color: rgba($black, 0.4);
     }
   }
-  &__error{
+  &__error {
     display: flex;
     justify-content: center;
     color: #ed1f2c;
-    font-weight: bold;
   }
   &__submit {
     width: 100%;
