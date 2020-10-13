@@ -17,17 +17,16 @@
     >
       <a-icon slot="prefix" type="mail" />
     </a-input>
-
     <div class="password-container__invalid-mail">
-      <span v-if="$v.mail.$error">Email invalido</span>
+      <span v-if="mail === '' && $v.mail.$dirty">Campo requerido</span>
+      <span v-if="mail != '' && $v.mail.$error  ">Email invalido</span>
     </div>
-
     <div>
       <a-button
         class="password-container__btn-send"
         type="primary"
         @click.prevent="recovery"
-        :disabled="$v.mail.$error || mail === ''"
+        :disabled="$v.mail.$invalid || mail === ''"
       >
         Enviar instrucciones
       </a-button>
@@ -38,21 +37,21 @@
       >
         Volver al login
       </nuxt-link>
-      <br />
-      <!-- TODO: Cambiar por margen -->
     </div>
+    <!-- <pre>
+      {{$v}}
+    </pre> -->
   </div>
 </template>
 
 <script>
 import { required, email } from "vuelidate/lib/validators";
 
-
 export default {
   name: "Password-recovery",
   data() {
     return {
-      mail: ""
+      mail: "",
     };
   },
 
@@ -60,11 +59,15 @@ export default {
     mail: {
       required,
       email,
-      
     }
   },
 
-};
+  methods:{
+    recovery(){
+      alert('Se envio mail de recuperacion de contraseña')
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -93,7 +96,7 @@ export default {
     margin-bottom: 1rem;
   }
   &__email {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     ::placeholder {
       padding-left: 4px;
       font-size: 14px;
@@ -102,7 +105,7 @@ export default {
   
   }
   &__invalid-mail{
-     display: flex;
+      display: flex;
       justify-content: center;
       align-items: center;
       color: #ed1f2c;
@@ -110,6 +113,7 @@ export default {
   }
   &__btn-send {
     width: 100%;
+    margin-top: 0.5rem;
   }
   &__backto-login {
     width: 100%;

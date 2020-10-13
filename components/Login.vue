@@ -79,7 +79,6 @@ export default {
       this.$router.push({ name: "index___es___default" });
     }
   },
-
   methods: {
     async validateLogin(user, password) {
       try {
